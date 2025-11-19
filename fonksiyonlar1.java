@@ -2,7 +2,7 @@ package fonksiyonlar;
 
 import java.util.Scanner;
 
-public class fonksiyon1 {
+public class fonksiyonlar1 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
