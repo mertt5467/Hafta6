@@ -10,14 +10,14 @@ public class paraUstuMakinesi {
         double paraUstu;
         System.out.println("Lütfen alacaðýnýz ürününün numarasýný yazýnýz.");
         yiyeceklist();
-        byte numara = input.nextByte();
+        int numara = input.nextInt();
         int ucret = yiyecekler(numara);
 
-        if (ucret <= 0) {
-
+        if (ucret == -1) {
+            System.out.println("Program sonlandýrýlýyor...");
         } else {
             System.out.println("Ödeyeceðiniz tutarý giriniz");
-            double odeme = input.nextShort();
+            double odeme = input.nextDouble();
             if (odeme <= 0) {
                 System.out.println("Lütfen geçerli bir sayý giriniz.");
             } else {
@@ -25,7 +25,8 @@ public class paraUstuMakinesi {
                 if (paraUstu >= 0) {
                     System.out.println("Para Üstü :\n" + paraUstu);
                 } else {
-                    System.out.println("Bakiye Yetersiz!");
+                    paraUstu = ucret - odeme;
+                    System.out.println("Bakiye Yetersiz! " + paraUstu + " TL daha gerek.");
                 }
             }
         }
@@ -37,10 +38,13 @@ public class paraUstuMakinesi {
         System.out.println("3 - Bisküvi (25 TL)");
         System.out.println("4 - Lolipop (12 TL)");
         System.out.println("5 - Çikolata (18 TL)");
+        System.out.println("6 - Meyve Suyu (20 TL)");
+        System.out.println("7 - Soda (30 TL)");
+        System.out.println("8 - Kek (15 TL)");
     }
 
-    static int yiyecekler(byte x) {
-        byte fiyat = 0;
+    static int yiyecekler(int x) {
+        int fiyat = -1;
         switch (x) {
             case 1:
                 fiyat = 10;
@@ -57,8 +61,17 @@ public class paraUstuMakinesi {
             case 5:
                 fiyat = 18;
                 break;
+            case 6:
+                fiyat = 20;
+                break;
+            case 7:
+                fiyat = 30;
+                break;
+            case 8:
+                fiyat = 15;
+                break;
             default:
-                System.out.println("Lütfen Geçerli bir sayý giriniz.");
+                System.out.println("Geçersiz bir numara girdiniz");
                 break;
         }
 
